@@ -1,27 +1,31 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { Nav } from 'react-bootstrap';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
 import authSelectors from '../../redux/auth/auth-selectors';
-import s from './Navigation.module.css';
 
 const Navigation = () => {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   return (
-    <nav className={s.nav}>
-      <NavLink to="/">
-        HOME
-      </NavLink>
-
-      {isLoggedIn && (
-        <>
-          <NavLink
-            to="/contacts"
-          >
-            Contacts
-          </NavLink>
-        </>
-      )}
-    </nav>
+    <Container>
+      <Row>
+        <Col>
+          <Nav.Link as={NavLink} to="/">
+            HOME
+          </Nav.Link>
+        </Col>
+        {isLoggedIn && (
+          <Col>
+            <Nav.Link as={NavLink} to="/contacts">
+              Contacts
+            </Nav.Link>
+          </Col>
+        )}
+      </Row>
+    </Container>
   );
 };
 

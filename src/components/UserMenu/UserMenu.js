@@ -1,21 +1,19 @@
 import { useDispatch, useSelector } from 'react-redux';
 import authSelectors from '../../redux/auth/auth-selectors';
 import authOperations from '../../redux/auth/auth-operation';
-
-// import defaultAvatar from './default-avatar.png';
+import { Navbar, Button } from 'react-bootstrap';
+import avatar from './avatar.jpg'
 
 export default function UserMenu() {
   const dispatch = useDispatch();
   const name = useSelector(authSelectors.getUsername);
-//   const avatar = defaultAvatar;
 
   return (
-    <div>
-      <img src='{avatar}' alt="" width="32" />
-      <span>Welcome, {name}</span>
-      <button type="button" onClick={() => dispatch(authOperations.logOut())}>
+    <Navbar.Collapse className="justify-content-end"><img className="rounded-circle me-3" src={avatar} alt="avatar" width="35" />
+      <Navbar.Text className='me-3'>Welcome, {name}!</Navbar.Text>     
+      <Button variant="light" onClick={() => dispatch(authOperations.logOut())}>
         Log out
-      </button>
-    </div>
+      </Button>
+    </Navbar.Collapse>
   );
 }

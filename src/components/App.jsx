@@ -1,8 +1,9 @@
 import { Route, Routes } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useEffect, Suspense, lazy } from 'react';
-import { SpinnerCircular } from 'spinners-react';
+import Spinner from 'react-bootstrap/Spinner';
 import authOperation from '../redux/auth/auth-operation'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import PublicRoute from './Routes/PublicRoute';
 import PrivateRoute from './Routes/PrivateRoute';
 import AppBar from './AppBar/AppBar';
@@ -22,7 +23,7 @@ useEffect(() => {
   return (
     <>
       <AppBar />
-      <Suspense fallback={<SpinnerCircular size="30" />}>
+      <Suspense fallback={<Spinner animation="border" variant="primary" className='mt-4'/>}>
         <Routes>
         <Route element={<PublicRoute/>}>
           <Route path='/' element={<HomePage/>}/>

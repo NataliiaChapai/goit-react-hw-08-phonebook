@@ -1,20 +1,25 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import s from './AuthNav.module.css';
+import { Nav } from 'react-bootstrap';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
 
 export default function AuthNav() {
   return (
-    <div className={s.authNav}>
-      <NavLink
-        to="/register"
-      >
-        Registration
-      </NavLink>
-      <NavLink
-        to="/login"
-      >
-        Login
-      </NavLink>
-    </div>
+    <Container>
+      <Row>
+        <Col>
+          <Nav.Link className="mr-2" as={NavLink} to="/register">
+            Registration
+          </Nav.Link>
+        </Col>
+        <Col>
+          <Nav.Link as={NavLink} to="/login">
+            Login
+          </Nav.Link>
+        </Col>
+      </Row>
+    </Container>
   );
 }

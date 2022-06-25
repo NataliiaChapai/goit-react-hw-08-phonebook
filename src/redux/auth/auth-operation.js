@@ -19,7 +19,7 @@ const register = createAsyncThunk('auth/register', async credentials => {
     token.set(data.token);
     return data;
   } catch (error) {
-    return Notify.error('Please enter the correct data');
+    return Notify.failure('Please enter the correct data');
   }
 });
 
@@ -29,7 +29,7 @@ const logIn = createAsyncThunk('auth/login', async credentials => {
     token.set(data.token);
     return data;
   } catch (error) {
-    return Notify.error('Please enter the correct data');
+    return Notify.failure('Please enter the correct data');
   }
 });
 
@@ -38,7 +38,7 @@ const logOut = createAsyncThunk('auth/logout', async () => {
     await axios.post('/users/logout');
     token.unset();
   } catch (error) {
-    return Notify.error('Something went wrong');
+    return Notify.failure('Something went wrong');
   }
 });
 
@@ -57,7 +57,7 @@ const fetchCurrentUser = createAsyncThunk(
       const { data } = await axios.get('/users/current');
       return data;
     } catch (error) {
-      return Notify.error('Something went wrong');
+      return Notify.failure('Something went wrong');
     }
   },
 );
