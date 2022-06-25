@@ -20,7 +20,7 @@ export default function AppBar() {
       <Container>
         <NavbarToggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="me-auto" variant="tabs" defaultActiveKey="/home">
+          <Nav className="me-auto" variant="tabs" defaultActiveKey="/">
             <Navigation />
           </Nav>
           <Nav variant="tabs">{isLoggedIn ? <UserMenu /> : <AuthNav />}</Nav>
